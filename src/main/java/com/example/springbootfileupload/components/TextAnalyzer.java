@@ -1,4 +1,4 @@
-package com.example.springbootfileupload.service;
+package com.example.springbootfileupload.components;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

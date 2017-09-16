@@ -1,4 +1,4 @@
-package com.example.springbootfileupload.service;
+package com.example.springbootfileupload.components;
 
 import lombok.Data;
 import org.springframework.beans.factory.config.BeanDefinition;
