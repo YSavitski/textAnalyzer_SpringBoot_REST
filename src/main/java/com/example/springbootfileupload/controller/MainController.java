@@ -1,9 +1,8 @@
 package com.example.springbootfileupload.controller;
 
-import com.example.springbootfileupload.components.TextAnalyzer;
-import com.example.springbootfileupload.components.WordsCounter;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.example.springbootfileupload.components.brackets.BracketsAnalyzer;
+import com.example.springbootfileupload.components.textanalyzer.TextAnalyzer;
+import com.example.springbootfileupload.components.textanalyzer.WordsCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,18 +13,22 @@ import java.util.Map;
 
 @RestController
 public class MainController {
-
-    private final Logger logger = LoggerFactory.getLogger(MainController.class);
-
     @Autowired
     private TextAnalyzer textAnalyzer;
 
+    @Autowired
+    private BracketsAnalyzer bracketsAnalyzer;
+
     @PostMapping("/")
-    public Map<String, WordsCounter> getTopRepeatedWords(
+    public Object getTopRepeatedWords(
             @RequestParam("file")MultipartFile file,
-            @RequestParam("topValue") int topValue)
+            @RequestParam("checkType") String checkType)
     {
-        return textAnalyzer.getStatisticByRepeatedWords(file, topValue);
+        if(checkType.equals("textAnalyzer")){
+            return textAnalyzer.getStatisticByRepeatedWords(file);
+        } else {
+            return bracketsAnalyzer.checkBrackets(file) ? "correct brackets query" : "correct brackets query";
+        }
     }
 
 

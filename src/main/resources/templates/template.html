@@ -4,10 +4,17 @@
 </head>
 <body>
 
-<form method="POST" enctype="multipart/form-data" id="fileUploadForm" th:action="@{/}">
-    <input type="text" name="topValue"/><br/><br/>
-    <input type="file" name="file"/><br/><br/>
-    <input type="submit" value="Submit" id="btnSubmit"/>
+<form method="post" enctype="multipart/form-data" id="fileUploadForm" th:action="@{/}">
+    <input type="file" name="file"/><br/>
+    <ul>
+        <li>
+            <input type="radio" name="checkType" value="textAnalyzer">Run Text Analyzer</input><br/>
+        </li>
+        <li>
+            <input type="radio" name="checkType" value="bracketsAnalyzer">Run Brackets Analyzer</input>
+        </li>
+    </ul>
+    <input type="submit" value="Check" id="btnSubmit"/>
 </form>
 </body>
 </html>

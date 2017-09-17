@@ -1,4 +1,4 @@
-package com.example.springbootfileupload.components;
+package com.example.springbootfileupload.components.textanalyzer;
 
 import lombok.Data;
 import org.springframework.beans.factory.config.BeanDefinition;
