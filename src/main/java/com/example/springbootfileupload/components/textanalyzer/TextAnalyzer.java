@@ -24,6 +24,10 @@ public class TextAnalyzer {
     private final ArrayList<String> neededWords = new ArrayList<>(1);
     private final HashMap<String, WordsCounter> countsWords = new HashMap<>();
 
+    /**
+     * Putting original word
+     * @param word - original word
+     */
     public void putWord(String word){
         WordsCounter counter = countsWords.get(word);
         if(counter!=null){
@@ -41,6 +45,11 @@ public class TextAnalyzer {
         }
     }
 
+    /**
+     * Method returns sorted Map of the words by count repeats
+     * @param topValue - count returned of top number positions of words
+     * @return sorted by count repeats of words Map
+     */
     private Map<String, WordsCounter> topWords(int topValue){
         return countsWords.entrySet()
                 .stream()
@@ -61,6 +70,11 @@ public class TextAnalyzer {
                         (v1,v2) -> v1, LinkedHashMap::new));
     }
 
+    /**
+     * Reading user's file and counting repetitions
+     * @param file - user's input file
+     * @return - top10 common words with their sum of repetitions
+     */
     public Map<String, WordsCounter> getStatisticByRepeatedWords(MultipartFile file){
         StringBuilder sb = new StringBuilder(100);
 

@@ -17,6 +17,11 @@ public class BracketsAnalyzer {
     @Autowired
     private BracketsChecker checker;
 
+    /**
+     * Reading user's file and check correct query of brackets
+     * @param file - user's input file
+     * @return correct of incorrect query of brackets
+     */
     public boolean checkBrackets(MultipartFile file){
         boolean flag = true;
         logger.info(String.format("Started reading file %s for brackets analysis", file.getOriginalFilename()));

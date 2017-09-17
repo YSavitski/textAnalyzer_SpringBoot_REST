@@ -4,6 +4,11 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 
+/**
+ * Stack implementation used by ArrayList
+ * @param <T> - generic parameter
+ */
+
 @Component
 public class ArrayListStack<T> {
     private ArrayList<T> list = new ArrayList<>();

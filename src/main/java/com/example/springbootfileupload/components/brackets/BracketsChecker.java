@@ -8,6 +8,11 @@ public class BracketsChecker {
     @Autowired
     private ArrayListStack<Character> stack;
 
+    /**
+     * Check each input string from user's file
+     * @param checkedString input string from user's file
+     * @return correct or incorrect query of brackets
+     */
     public boolean checkChars(String checkedString){
         char checkedChar;
         for (int i=0; i<checkedString.length(); i++){
@@ -34,6 +39,7 @@ public class BracketsChecker {
         }
         return true;
     }
+
 
     public boolean checkIsEmptyStack(){
         return stack.isEmpty();
