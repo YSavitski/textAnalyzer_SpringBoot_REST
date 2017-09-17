@@ -2,14 +2,11 @@ package com.example.springbootfileupload.controller;
 
 import com.example.springbootfileupload.components.brackets.BracketsAnalyzer;
 import com.example.springbootfileupload.components.textanalyzer.TextAnalyzer;
-import com.example.springbootfileupload.components.textanalyzer.WordsCounter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.Map;
 
 @RestController
 public class MainController {

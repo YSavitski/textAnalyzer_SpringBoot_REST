@@ -38,6 +38,7 @@ public class BracketsAnalyzer {
         }
         logger.info(String.format("Finish reading file %s for brackets analysis", file.getOriginalFilename()));
 
+        checker.clearStack();
         return flag;
 
     }

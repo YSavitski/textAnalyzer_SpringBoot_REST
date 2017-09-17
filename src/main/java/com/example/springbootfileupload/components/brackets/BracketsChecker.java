@@ -38,4 +38,8 @@ public class BracketsChecker {
     public boolean checkIsEmptyStack(){
         return stack.isEmpty();
     }
+
+    public void clearStack(){
+        stack.clearStack();
+    }
 }

@@ -27,4 +27,8 @@ public class ArrayListStack<T> {
     public boolean isEmpty(){
         return list.isEmpty();
     }
+
+    public void clearStack(){
+        list.clear();
+    }
 }
