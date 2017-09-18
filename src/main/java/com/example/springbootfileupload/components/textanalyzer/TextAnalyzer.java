@@ -46,24 +46,21 @@ public class TextAnalyzer {
     }
 
     /**
-     * Method returns sorted Map of the words by count repeats
+     * Method returns sorted Map of the words by count repeats excluded unions, prepositions and pronouns
      * @param topValue - count returned of top number positions of words
      * @return sorted by count repeats of words Map
      */
     private Map<String, WordsCounter> topWords(int topValue){
         return countsWords.entrySet()
                 .stream()
-                .sorted(Map.Entry.comparingByValue(new Comparator<WordsCounter>() {
-                    @Override
-                    public int compare(WordsCounter o1, WordsCounter o2) {
-                        if(o1.getValue() == o2.getValue())
-                            return 0;
-                        else if(o2.getValue() > o1.getValue())
-                            return 1;
-                        else
-                            return -1;
-                    }
-                }))
+                .sorted(Map.Entry.comparingByValue(((o1, o2) -> {
+                    if(o1.getValue() == o2.getValue())
+                        return 0;
+                    else if(o2.getValue() > o1.getValue())
+                        return 1;
+                    else
+                        return -1;
+                })))
                 .filter(map-> !ExcludedWordUtil.exludedRussianWords().contains(map.getKey()))
                 .limit(topValue)
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
