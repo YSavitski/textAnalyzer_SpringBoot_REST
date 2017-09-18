@@ -74,6 +74,7 @@ public class TextAnalyzer {
      */
     public Map<String, WordsCounter> getStatisticByRepeatedWords(MultipartFile file){
         StringBuilder sb = new StringBuilder(100);
+        clearUsedData();
 
         logger.info(String.format("Started reading file %s for text analysis", file.getOriginalFilename()));
         try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file.getInputStream(), "CP1251"))){
@@ -102,5 +103,10 @@ public class TextAnalyzer {
         logger.info(String.format("Finish reading file %s for text analysis", file.getOriginalFilename()));
 
         return topWords(10);
+    }
+
+    public void clearUsedData(){
+        neededWords.clear();
+        countsWords.clear();
     }
 }
