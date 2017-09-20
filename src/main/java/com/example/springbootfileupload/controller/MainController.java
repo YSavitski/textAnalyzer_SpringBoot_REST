@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Map;
 
 @RestController
@@ -33,8 +34,11 @@ public class MainController {
     }
 
     @GetMapping("/bracketsAnalyzer")
-    public String checkBrackets(){
-        return bracketsAnalyzer.checkBrackets(new ByteArrayInputStream(tempFileBytes)) ?  "correct brackets query" : "correct brackets query";
+    public Map<String, String> checkBrackets(){
+        Map<String, String> map = new HashMap<>();
+        String message = bracketsAnalyzer.checkBrackets(new ByteArrayInputStream(tempFileBytes)) ?  "correct brackets query" : "incorrect brackets query";
+        map.put("Result of check is: ", message);
+        return map;
     }
 
     @PostMapping("/upload")

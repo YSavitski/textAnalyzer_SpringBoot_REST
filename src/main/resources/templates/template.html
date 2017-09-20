@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+
+<body>
+<h1>Spring Boot - REST - AJAX</h1>
+
+<form method="POST" enctype="multipart/form-data" id="fileUploadForm">
+    <input type="file" name="file"/><br/>
+    <input type="submit" value="Submit" id="btnSubmit"/>
+</form><br/>
+
+<button id="textAnalyzerButton" type="button" onclick="getTop10Words()">Text Analyzer</button>
+<button id="bracketsAnalyzerButton" type="button" onclick="checkBrackets()">Brackets Analyzer</button>
+
+<h1>Ajax Result</h1>
+<pre>
+    <span id="result"></span>
+</pre>
+
+
+<script type="text/javascript"
+        src="webjars/jquery/2.2.4/jquery.min.js"></script>
+
+<script type="text/javascript" src="js/main.js"></script>
+
+</body>
+</html>
