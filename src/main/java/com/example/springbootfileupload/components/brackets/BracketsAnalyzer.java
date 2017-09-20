@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 @Service
@@ -22,10 +23,9 @@ public class BracketsAnalyzer {
      * @param file - user's input file
      * @return correct of incorrect query of brackets
      */
-    public boolean checkBrackets(MultipartFile file){
+    public boolean checkBrackets(InputStream fileStream){
         boolean flag = true;
-        logger.info(String.format("Started reading file %s for brackets analysis", file.getOriginalFilename()));
-        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file.getInputStream(), "CP1251"))){
+        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileStream, "CP1251"))){
             String currentLine;
             while ((currentLine = bufferedReader.readLine()) != null){
                 if(checker.checkChars(currentLine))
@@ -41,7 +41,6 @@ public class BracketsAnalyzer {
         } catch (IOException e){
             e.printStackTrace();
         }
-        logger.info(String.format("Finish reading file %s for brackets analysis", file.getOriginalFilename()));
 
         checker.clearStack();
         return flag;

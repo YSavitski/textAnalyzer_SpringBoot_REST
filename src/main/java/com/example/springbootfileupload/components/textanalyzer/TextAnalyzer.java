@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -69,15 +70,14 @@ public class TextAnalyzer {
 
     /**
      * Reading user's file and counting repetitions
-     * @param file - user's input file
+     * @param fileStream - user's input file
      * @return - top10 common words with their sum of repetitions
      */
-    public Map<String, WordsCounter> getStatisticByRepeatedWords(MultipartFile file){
+    public Map<String, WordsCounter> getStatisticByRepeatedWords(InputStream fileStream){
         StringBuilder sb = new StringBuilder(100);
         clearUsedData();
 
-        logger.info(String.format("Started reading file %s for text analysis", file.getOriginalFilename()));
-        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(file.getInputStream(), "CP1251"))){
+        try(BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(fileStream, "CP1251"))){
             String currentLine;
             while ((currentLine = bufferedReader.readLine()) != null){
 
@@ -100,7 +100,6 @@ public class TextAnalyzer {
         } catch (IOException e){
             e.printStackTrace();
         }
-        logger.info(String.format("Finish reading file %s for text analysis", file.getOriginalFilename()));
 
         return topWords(10);
     }
